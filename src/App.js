@@ -1,14 +1,13 @@
 
 import './App.css'
 import Countrys from './Countrys';
-import CreateCard from './CreateCard';
-
+import React from 'react';
 
 function App() {
   return (
     <div className="App">
- 
       <Countrys />
+      
     </div>
   );
 }
