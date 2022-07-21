@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./App.css";
+
 import CreateCard from "./CreateCard";
 //import Button from "react-bootstrap/Button";
 //import Card from "react-bootstrap/Card";
@@ -16,10 +17,10 @@ function Countrys() {
     try {
       const response = await fetch("https://restcountries.com/v2/all");
       const results = await response.json();
-      console.log(results);
+     // console.log(results);
       setCountrys(results);
-
-      console.log("countrys :>> ", countrys);
+console.log(results)
+      //console.log("countrys :>> ", countrys);
     } catch (error) { 
       console.log("error :>> ", error.message);
       setError(error.message);
@@ -32,13 +33,14 @@ function Countrys() {
   }, []);
 
   return (
-    <div>
+    <div> 
       {/* {console.log("countrys :>> ", countrys)} */}
       <div>
       
         {countrys && countrys.map((country, i) => {
             
             return (
+              
               <div className="text-center" key={i}>
                 <CreateCard country={country}  />
               </div>

@@ -1,6 +1,10 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link, useNavigate } from "react-router-dom";
+
+//import Link from "react-router-dom";
+import "./style/myStyle.css";
 //import Countrys from "./Countrys";
 
 
@@ -21,6 +25,12 @@ function CreateCard({ country }) {
   // Second way : destructing inside the function : create an objet with the names of the properties, and make them equal to the parent property
   // const { flag, name, capital } = props.country;
 
+  // Go to details using useNavigate Hook
+// let navigate = useNavigate()
+
+//   const showMore = () => {
+//     navigate(`../countries/${name}`)
+//   }
   return (
     <Card className="bg-dark text-white  m-3 p-2" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={flag} style={{ width: "18rem" }} />
@@ -29,7 +39,12 @@ function CreateCard({ country }) {
           <h2>{name}</h2>
         </Card.Title>
         <Card.Text> {capital} </Card.Text>
-        <Button variant="primary">More Info</Button>
+       {/*    <Link to={{name}} />  or    <Link to={`${name}`} /> */}
+       {/* Line 44 Button that takes to details using and onclik function and useNavigate hook */}
+        {/* <Button onClick={showMore} variant="primary" >More Info</Button> */}
+        <Link to={`${name}`}>
+        <Button  variant="primary" >More Info</Button>
+        </Link>
       </Card.Body>
     </Card>
   );
