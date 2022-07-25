@@ -1,8 +1,15 @@
 import React from "react";
+//import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { Link, useNavigate } from "react-router-dom";
-import "./style/myStyle.css";
+import { Link } from "react-router-dom";
+import "react-bootstrap"
+
+import { Container } from "react-bootstrap";
+
+
+
+
 
 
 
@@ -30,11 +37,14 @@ function CreateCard({ country }) {
 //     navigate(`../countries/${name}`)
 //   }
   return (
-    <Card className="bg-dark text-white  m-3 p-2" style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={flag} style={{ width: "18rem" }} />
-      <Card.Body>
-        <Card.Title>
-          <h2>{name}</h2>
+    <Container className="grid-container " style={{ width: "19rem" }}>
+    <div  className="mb-5 " style={{ width: "18rem" }}>
+   
+    <Card className="grid-item">
+      <Card.Img variant="top" src={flag}  />
+      <Card.Body >
+        <Card.Title >
+          <h2 >{name}</h2>
         </Card.Title>
         <Card.Text> {capital} </Card.Text>
        {/*    <Link to={{name}} />  or    <Link to={`${name}`} /> */}
@@ -45,6 +55,9 @@ function CreateCard({ country }) {
         </Link>
       </Card.Body>
     </Card>
+    </div>
+    
+    </Container>
   );
 }
 

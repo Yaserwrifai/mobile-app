@@ -11,7 +11,7 @@ function Nav() {
         }}
       >
         <Link to="/">Home</Link>|{"  "}
-        <Link to="countries">Countrys</Link> |{"  "}
+        <Link to="countries">Countries</Link> |{"  "}
         <Link to="about">About</Link>|{"  "}
         {/* <Link to="countrys/afghanistan">Details from Afghanistan</Link>|{"  "} */}
         

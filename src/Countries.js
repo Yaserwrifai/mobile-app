@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import CreateCard from "./CreateCard";
+import Search from "./components/Search";
+import Select from "./components/SelectSearch"
 
 function Countries() {
   const [countries, setCountries] = useState([]);
-
+// eslint-disable-next-line 
   const [error,setError] = useState(null);
+  const [filterResult, setFilterResult] = useState("");
 
   const fecthCountries = async () => {
     try {
@@ -21,26 +24,38 @@ function Countries() {
    
     }
   };
+  const inputWord = (event) => { 
+    // here you can get the value you are typing
+    // console.log(event.target.value);
+      setFilterResult(event.target.value);
+  }
+  const filterCountry = !filterResult ? countries : countries.filter((item) => {
+    return item.name.toLowerCase().includes(filterResult.toLocaleLowerCase())
+})
+ console.log('filterCountry:>>', filterCountry)
+
+
+
+
 
   useEffect(() => {
     fecthCountries();
   }, []);
 
+  
   return (
-    <div> 
+    <div grid-container> 
+     <Search inputWord={inputWord}/>
+     <Select countries={countries} /> 
       {/* {console.log("countries :>> ", countries)} */}
-      <div>
-      
-        {countries && countries.map((country, i) => {
-            
+        {filterCountry && filterCountry.map((country, i) => {
             return (
-              
-              <div className="text-center" key={i}>
-                <CreateCard country={country}  />
+              <div className="text-center grid-item  " key={i}>
+            <CreateCard country={country}   /> 
+           
               </div>
             );
-          })}
-      </div>
+          })}    
     </div>
   );
 }
