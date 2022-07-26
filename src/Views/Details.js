@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
@@ -11,27 +11,31 @@ function Details() {
   console.log("useParams()>>>", useParams());
   // Second Fetch function with Name of the country
   const [details, setDetails] = useState([]);
+  // eslint-disable-next-line
   const [error, setError] = useState(null);
   const fecthDetails = async () => {
     try {
-      const response = await fetch("https://restcountries.com/v2/all");
+      const response = await fetch(`https://restcountries.com/v2/name/${name}`);
       const results = await response.json();
       setDetails(results);
     } catch (error) {
       console.log("error  :>>", error);
+        
       setError(error.message);
     }
   };
+
+// console.log(details);
+ //const filteredData = details.filter((countrie) => {
+ // return countrie.name === name ;
+ //});
+
+  console.log("details........>>",details);
   useEffect(() => {
     fecthDetails();
   }, []);
 
-  console.log(details);
-  const filteredData = details.filter((countrie) => {
-    return countrie.name === name;
-  });
-
-  console.log(filteredData);
+  
 
   return (
     <>
@@ -39,7 +43,7 @@ function Details() {
         {" "}
         <Button variant="primary">Go BACK</Button>
       </Link>
-      {filteredData.map((country, i) => {
+      {details.map((country, i) => {
         return (
           <Card style={{ height: "28rem", width: "40rem" }}>
             <Card.Img variant="top" src={country.flag} />

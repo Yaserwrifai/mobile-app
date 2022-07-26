@@ -4,8 +4,7 @@ import CreateCard from "./CreateCard";
 import Search from "./components/Search";
 import Select from "./components/SelectSearch"
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+
 
 function Countries() {
     const [countries, setCountries] = useState([]);
@@ -52,16 +51,7 @@ function Countries() {
               {
             filterCountry && filterCountry.map((country, i) => {
                 return (
-
-                        
-                        
-
-                          <CreateCard country={country} key={i}/>
-                        
-                        
-
-
-                        
+                          <CreateCard country={country} key={i}/>                        
                         );
                       })
                     } 
