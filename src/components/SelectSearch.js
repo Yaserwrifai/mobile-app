@@ -1,42 +1,23 @@
-import React from 'react'
-import {useEffect, useState} from "react";
-import Select from 'react-select'
+import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
 
+function SelectSearch({country}) {
+  const {name}=country
+  //const [name, setName] = useState("");
+  const option = { country };
+  const handelChange = (event) => {
+    console.log("event: ", event.target.value);
+   // setName(event.target.value);
+  };
 
-
-function SelectSearch(country) {
-  const [region, setRegion] = useState([]);
-  const filterRegions = async (region) => {
-    const url = `https://restcountries.eu/rest/v2/region/${region}`
-    const res = await fetch(url)
-    const data = await res.json()
-    setRegion(data)
-  }
-
-  useEffect(() => {
-    filterRegions()
-    // eslint-disable-next-line
-  }, [])
-  console.log(region.name);
   return (
-    <div className="select">
-    <select
-      name="select"
-      id="select"
-      onChange={(e) => filterRegions(e.target.value)}
-      value={region.name}
-      
-    >
-      <option value="Africa">Africa</option>
-      <option value="Asia">Asia</option>
-      <option value="Europe">Europe</option>
-      <option value="Americas">Americas</option>
-      <option value="Oceania">Oceania</option>
-    </select>
+    <div>
+      {/* <Select options={country} /> */}
+      <Form.Select onChange={handelChange} aria-label="Default select example">
+        <option>Open this select menu</option>
+        <option value={name}>.......</option>
+      </Form.Select>
     </div>
-    
-  )
-  
+  );
 }
-
 export default SelectSearch;

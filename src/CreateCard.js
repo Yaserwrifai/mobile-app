@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 
 
 
+
 function CreateCard({country}) {
     // Above here, line 5, is the third way of destructiring, putting the name of the props that you pass from the parent component (you called this props "country" in Countries.js)
     // and then below you can directly access by wrintting country.flag

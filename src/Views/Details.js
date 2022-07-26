@@ -18,6 +18,7 @@ function Details() {
       const response = await fetch(`https://restcountries.com/v2/name/${name}`);
       const results = await response.json();
       setDetails(results);
+      console.log("details..........>>",results);
     } catch (error) {
       console.log("error  :>>", error);
         
@@ -30,7 +31,7 @@ function Details() {
  // return countrie.name === name ;
  //});
 
-  console.log("details........>>",details);
+ console.log("details..........>>",details);
   useEffect(() => {
     fecthDetails();
   }, []);

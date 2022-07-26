@@ -7,6 +7,7 @@ import Nav from "./components/Nav";
 
 
 
+
 import Home from "./Views/Home";
 import Countries from './Countries';
 import Details from "./Views/Details";
@@ -16,11 +17,15 @@ import NoMatch from "./Views/NoMatch";
 
 
 
+
+
 function App() {
   return (
     <div>
   
+
       <Nav />
+    
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="countries" element={<Countries />} />
@@ -29,7 +34,7 @@ function App() {
         <Route path="*" element={<NoMatch />} />
       </Routes>
 
-      {/* <Countrys /> */}
+     
       
     </div>
   );
