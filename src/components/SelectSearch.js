@@ -1,23 +1,49 @@
-import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
+import React, {useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
 
-function SelectSearch({country}) {
-  const {name}=country
-  //const [name, setName] = useState("");
-  const option = { country };
-  const handelChange = (event) => {
-    console.log("event: ", event.target.value);
-   // setName(event.target.value);
-  };
+
+
+function Country()  {
+  let { region } = useParams();
+  console.log("region>>>>: ", region);
+  console.log("useParams()>>>", useParams());
+
+
+  const [country, setCountry]= useState([]);
+  
+
+  useEffect( ()=>{
+   const getcountry= async ()=>{
+     const request= await fetch(`https://restcountries.com/v2/all?region=${region}`);
+     const result= await request.json();
+    // console.log(result);
+     setCountry(result);
+
+   }
+   getcountry();
+
+
+  },[region]);
+
+  
+
+
+  
+ 
+  const options=country;
+  console.log(options)
 
   return (
-    <div>
-      {/* <Select options={country} /> */}
-      <Form.Select onChange={handelChange} aria-label="Default select example">
-        <option>Open this select menu</option>
-        <option value={name}>.......</option>
-      </Form.Select>
+    <div >
+      <div className="select-container">
+        <select>
+          {options.map((option) => (
+            <option key={option.numericCode} value={option.numericCode}>{option.region}</option>
+          ))}
+        </select>
+      </div>
     </div>
   );
+
 }
-export default SelectSearch;
+export default Country;

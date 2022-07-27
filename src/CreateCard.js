@@ -49,6 +49,7 @@ function CreateCard({country}) {
                         `${name}`
                     }>
                         <Button variant="primary">More Info</Button>
+                       
                     </Link>
                 </Card.Body>
             </Card>

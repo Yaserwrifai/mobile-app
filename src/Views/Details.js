@@ -2,7 +2,7 @@ import { useParams,Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Button} from "react-bootstrap";
 
 
 function Details() {
