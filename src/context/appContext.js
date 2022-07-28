@@ -10,8 +10,8 @@ export const AppContext = createContext();
 export const AppContextProvider = (props) => {
   console.log("props :>> ", props);
   // 4. Move state and function
-  const[filterResult,setFilterResult]=useState("")
-  const [countries, setCountries] = useState("");
+  const[filterResult,setFilterResult]=useState([])
+  const [countries, setCountries] = useState([]);
   const [loader, setLoader] = useState(true);
   const [error, setError] = useState(null);
 
@@ -19,6 +19,7 @@ export const AppContextProvider = (props) => {
     try {
       const response = await fetch("https://restcountries.com/v2/all/");
       const results = await response.json();
+      console.log('results', results)
       setCountries(results);
       setLoader(false);
     } catch (error) {
