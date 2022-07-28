@@ -1,34 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import "./App.css";
 import CreateCard from "./CreateCard";
 import Search from "./components/Search";
 import Row from 'react-bootstrap/Row';
 import SelectSearch from "./components/SelectSearch";
-
+import {AppContext}from './context/appContext'
+import Button from "react-bootstrap/Button";
 
 
 
 function Countries() {
-    const [countries, setCountries] = useState([]);
-    // eslint-disable-next-line
-    const [error, setError] = useState(null);
-    const [filterResult, setFilterResult] = useState("");
-    
+   // const context=useContext(AppContext);
+   // console.log("context :>>>",context);
+    const {filterResult,setFilterResult,countries,setCountries,fetchData,deleteData,loader}= useContext(AppContext)
 
-    const fecthCountries = async () => {
-        try {
-            const response = await fetch("https://restcountries.com/v2/all");
-            const results = await response.json();
-          //  console.log(results);
-            setCountries(results);
-
-            // console.log("countriess :>> ", countries);
-        } catch (error) {
-            console.log("error :>> ", error.message);
-            setError(error.message);
-
-        }
-    };
     const inputWord = (event) => {
         // here you can get the value you are typing
         // console.log(event.target.value);
@@ -40,12 +25,13 @@ function Countries() {
     //console.log('filterCountry:>>', filterCountry)
     
     useEffect(() => {
-        fecthCountries();
+        fetchData();
     }, []);
 
 
     return (
-        <div>
+        <div> 
+         <Button variant="danger" onClick={(deleteData)} >Delete all</Button> 
             <Search inputWord={inputWord}/>
             <SelectSearch country={countries} />
             
@@ -58,8 +44,6 @@ function Countries() {
                       })
                     } 
                     </Row>
-            
-            
                     
         </div>
     );

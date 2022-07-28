@@ -1,3 +1,60 @@
+// import React, { useContext, useEffect, useState } from "react";
+// import { Button} from "react-bootstrap";
+// import { Link } from "react-router-dom";
+// import { useParams, useNavigate, useLocation } from "react-router-dom";
+// import { AppContext } from "../context/appContext";
+
+// function Details() {
+//   //   console.log(useParams);
+
+//   const { name } = useParams();
+//   const location = useLocation();
+//   // console.log(location);
+//   const [singleCountry, setSingleCountry] = useState(null);
+//   let goHome = useNavigate();
+
+//   const goHomeHandler = () => {
+//     goHome("/");
+//   };
+
+//   const fechtSingleCountry = async () => {
+//     try {
+//       const response = await fetch(`https://restcountries.com/v2/all`);
+//       const results = await response.json();
+//       setSingleCountry(results);
+//       // console.log("results :>> ", results);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+//   useEffect(() => {
+//     fechtSingleCountry();
+//   }, []);
+//   console.log("singleCountry :>> ", singleCountry);
+
+//   return (
+//     <div>
+      
+      
+//       {singleCountry ? (
+//         <h2>Details from {singleCountry.name} </h2>
+//       ) : (
+//         <p>Nothing to show</p>
+//       )}
+//       {/*  */}
+//       <button onClick={goHomeHandler}>go Home</button>
+
+//     </div>
+//   );
+// }
+
+// export default Details;
+
+
+
+
+
+
 import { useParams,Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
@@ -46,7 +103,7 @@ function Details() {
       </Link>
       {details.map((country, i) => {
         return (
-          <Card style={{ height: "28rem", width: "40rem" }}>
+          <Card  key={i}  style={{ height: "15rem", width: "20rem" }}>
             <Card.Img variant="top" src={country.flag} />
             <Card.Body>
               <Card.Title>

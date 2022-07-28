@@ -5,11 +5,11 @@ import { useParams } from "react-router-dom";
 
 function Country()  {
   let { region } = useParams();
-  console.log("region>>>>: ", region);
-  console.log("useParams()>>>", useParams());
+ // console.log("region>>>>: ", region);
+ // console.log("useParams()>>>", useParams());
 
 
-  const [country, setCountry]= useState([]);
+  const [continents, setContinents]= useState([]);
   
 
   useEffect( ()=>{
@@ -17,7 +17,7 @@ function Country()  {
      const request= await fetch(`https://restcountries.com/v2/all?region=${region}`);
      const result= await request.json();
     // console.log(result);
-     setCountry(result);
+    setContinents(result);
 
    }
    getcountry();
@@ -25,20 +25,21 @@ function Country()  {
 
   },[region]);
 
-  
-
-
-  
+  const continent = [];
+  continents &&continents.forEach((item, i) => {
+      continent.push(item.region);
+    });
+    const removedDoubles = [...new Set(continent)];
+   // console.log("removedDoubles: ", removedDoubles);
+   // console.log("continent: ", continent);
+  const options=removedDoubles;
  
-  const options=country;
-  console.log(options)
-
   return (
     <div >
       <div className="select-container">
         <select>
-          {options.map((option) => (
-            <option key={option.numericCode} value={option.numericCode}>{option.region}</option>
+          {options.map((option,i) => (
+            <option key={i} value={option.numericCode}>{option}</option>
           ))}
         </select>
       </div>

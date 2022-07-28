@@ -1,7 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Button } from "react-bootstrap";
+import { Link , useNavigate} from "react-router-dom";
+import {AuthContext} from  "./context/authContext.js"
 
 function Nav() {
+  const { user, setUser } = useContext(AuthContext);
+  const redirectTo = useNavigate()
+  const login = () => {
+    console.log(user)
+    setUser({
+      userName: "Yaser",
+    });
+    redirectTo("/")
+  };
+  const logOut = () => {
+    console.log(user)
+    setUser(
+    
+    null);
+  };
+
+
+
+
   return (
     <div>
       <nav
@@ -14,7 +36,7 @@ function Nav() {
         <Link to="countries">Countries</Link> |{"  "}
         <Link to="about">About</Link>|{"  "}
         {/* <Link to="countrys/afghanistan">Details from Afghanistan</Link>|{"  "} */}
-        
+        <Button variant="info" onClick={login}>login</Button>
       </nav>
     </div>
   );

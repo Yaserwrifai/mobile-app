@@ -31,6 +31,7 @@ function CreateCard({country}) {
     // const showMore = () => {
     //     navigate(`../countries/${name}`)
     // }
+
     return (
 
         <Col>
@@ -48,7 +49,7 @@ function CreateCard({country}) {
                     <Link to={
                         `${name}`
                     }>
-                        <Button variant="primary">More Info</Button>
+                        <Button  variant="primary">More Info</Button>
                        
                     </Link>
                 </Card.Body>
