@@ -11,6 +11,7 @@ import About from "./Views/About";
 import NoMatch from "./Views/NoMatch";
 import { AppContextProvider } from "./context/appContext";
 import { AuthContextProvider } from "./context/authContext";
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -21,7 +22,10 @@ function App() {
       <AppContextProvider>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="countries" element={<Countries />} />
+        <Route path="countries" element={
+            <ProtectedRoute><Countries /></ProtectedRoute>
+            } />
+        
         <Route path="about" element={<About />} />
         <Route path="countries/:name" element={<Details />} />
         <Route path="*" element={<NoMatch />} />

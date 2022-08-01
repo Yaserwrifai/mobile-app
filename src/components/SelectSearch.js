@@ -1,22 +1,28 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { useParams } from "react-router-dom";
+import { AppContext } from "../context/appContext";
+import { AuthContext } from "../context/authContext";
 
 
 
-function SelectSearch({countries})  {
-  console.log('country', countries)
+function SelectSearch({countries, getRegionUrl})  {
+  // console.log('country', countries)
   let { region } = useParams();
   const [continents, setContinents]= useState([]);
   const [regions, setRegions] = useState(null)
+  const {url, setUrl} = useContext(AppContext)
+
+const regionsList = () => {
+  const uniqueRegions = countries.map((country)=> {
+  
+    return country.region
+  })
+  return ([...new Set(uniqueRegions)])
+}
 
 
 
 
-
-// console.log('regions', regions)
-
- // console.log("region>>>>: ", region);
- // console.log("useParams()>>>", useParams());
 
 
   
@@ -36,24 +42,21 @@ function SelectSearch({countries})  {
 
 
   // },[]);
+const handleSelect = (event) => {
+  console.log(event.target.value)
+  
+  getRegionUrl(`https://restcountries.com/v3.1/region/${event.target.value}`)
+}
 
-  // const continent = [];
-  // continents &&continents.forEach((item, i) => {
-  //     continent.push(item.region);
-  //   });
-    // const removedDoubles = [...new Set(continent)];
-   // console.log("removedDoubles: ", removedDoubles);
-   // console.log("continent: ", continent);
-  // const options=removedDoubles;
  
   return (
     <div >
       <div className="select-container">
-<select>
+<select onChange={handleSelect}>
  
         
-          {countries && countries.map((country,i) => (
-            <option key={i} value={country.region}>{country.region}</option>
+          {countries && regionsList().map((region,i) => (
+            <option key={i} value={region} >{region}</option>
           ))}
           </select>
       </div>

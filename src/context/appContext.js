@@ -8,16 +8,19 @@ export const AppContext = createContext();
 // 3. Create provider
 
 export const AppContextProvider = (props) => {
-  console.log("props :>> ", props);
+  // console.log("props :>> ", props);
   // 4. Move state and function
   const[filterResult,setFilterResult]=useState([])
   const [countries, setCountries] = useState([]);
   const [loader, setLoader] = useState(true);
   const [error, setError] = useState(null);
+  const [url, setUrl] = useState('https://restcountries.com/v2/all/')
 
-  const fetchData = async () => {
+  const fetchData = async (url) => {
+    console.log('url in fetchData context', url)
     try {
-      const response = await fetch("https://restcountries.com/v2/all/");
+
+      const response = await fetch(url);
       const results = await response.json();
       console.log('results', results)
       setCountries(results);
@@ -47,7 +50,9 @@ export const AppContextProvider = (props) => {
         fetchData,
         deleteData,
         filterResult,
-        setFilterResult
+        setFilterResult, 
+        url, 
+        setUrl
       }}
     >
       {props.children}

@@ -70,6 +70,8 @@ function Details() {
   const [details, setDetails] = useState([]);
   // eslint-disable-next-line
   const [error, setError] = useState(null);
+
+  //const fetchHook=useFetch(url)
   const fecthDetails = async () => {
     try {
       const response = await fetch(`https://restcountries.com/v2/name/${name}`);
@@ -97,11 +99,11 @@ function Details() {
 
   return (
     <>
-      <Link to="/countrys">
+      <Link to="/countries">
         {" "}
-        <Button variant="primary">Go BACK</Button>
+        <Button variant="primary">Go to Countries</Button>
       </Link>
-      {details.map((country, i) => {
+      {/* {details.map((country, i) => {
         return (
           <Card  key={i}  style={{ height: "15rem", width: "20rem" }}>
             <Card.Img variant="top" src={country.flag} />
@@ -130,7 +132,7 @@ function Details() {
             </ListGroup>
           </Card>
         );
-      })}
+      })} */}
     </>
   );
 }

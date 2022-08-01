@@ -6,41 +6,20 @@ import "react-bootstrap"
 import Col from 'react-bootstrap/Col';
 
 
-
-
 function CreateCard({country}) {
-    // Above here, line 5, is the third way of destructiring, putting the name of the props that you pass from the parent component (you called this props "country" in Countries.js)
-    // and then below you can directly access by wrintting country.flag
-    // console.log("props", props);
-    // const flag = country.flag;
-    // const name = country.name;
-    // const capital = country.capital;
-    const {flag, name, capital} = country;
-
-    // first way of using props : create a variable and access the property as in an object.
-    // const flag = props. country.flag;
-    // const name = props.country.name;
-    // const capital = props.country.capital;
-
-    // Second way : destructing inside the function : create an objet with the names of the properties, and make them equal to the parent property
-    // const { flag, name, capital } = props.country;
-
-    // Go to details using useNavigate Hook
-    // let navigate = useNavigate()
-
-    // const showMore = () => {
-    //     navigate(`../countries/${name}`)
-    // }
+// console.log('country...in create Card', country)
+    const {flag, name, capital, flags} = country;
+// console.log('country>>>>', country)
 
     return (
 
         <Col>
             <Card>
                 <Card.Img variant="top"
-                    src={flag}/>
+                    src={flags.svg}/>
                 <Card.Body>
                     <Card.Title>
-                        <h2>{name}</h2>
+                        <h2>{name.common}</h2>
                     </Card.Title>
                     <Card.Text> {capital} </Card.Text>
                     {/*    <Link to={{name}} />  or    <Link to={`${name}`} /> */}
@@ -49,8 +28,8 @@ function CreateCard({country}) {
                     <Link to={
                         `${name}`
                     }>
-                        <Button  variant="primary">More Info</Button>
-                       
+                        <Button variant="primary">More Info</Button>
+
                     </Link>
                 </Card.Body>
             </Card>
