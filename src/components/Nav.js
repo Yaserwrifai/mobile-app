@@ -1,24 +1,32 @@
 import React from "react";
 import { useContext } from "react";
 import { Button } from "react-bootstrap";
-import { Link , useNavigate} from "react-router-dom";
-import {AuthContext} from  "../context/authContext"
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../config/config";
 
 function Nav() {
   const { user, setUser } = useContext(AuthContext);
-  const redirectTo = useNavigate()
+  const redirectTo = useNavigate();
   const login = () => {
-    console.log(user)
+    console.log(user);
     setUser({
-      userName: "Yaser",
+      userName: "YASER",
     });
-    redirectTo("/")
+    redirectTo("/");
   };
   const logOut = () => {
-    console.log(user)
-    setUser(
-    
-    null);
+    console.log(user);
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        setUser(null);
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log("signout error :>> ", error);
+      });
   };
 
 
@@ -32,13 +40,20 @@ function Nav() {
           paddingBottom: "1rem",
         }}
       >
-        <Link to="/">Home</Link>|{"  "}
-        <Link to="countries">Countries</Link> |{"  "}
-        <Link to="about">About</Link>|{"  "}
-        {/* <Link to="countrys/afghanistan">Details from Afghanistan</Link>|{"  "} */}
-        {user ? <Button variant="danger" onClick={logOut}>logout</Button> : <Button variant="info" onClick={login}>login</Button>}
-        
-        
+        <Link to="/">Home</Link> | <Link to="/about">About</Link> |{" "}
+        {!user && <Link to="/Register">Register</Link>}|{" "}
+        {user && <Link to="/countries">Countries</Link>}
+        {user ? (
+          <Button variant="danger" onClick={logOut}>
+            {" "}
+            logout
+          </Button>
+        ) : (
+          <Button variant="info" onClick={login}>
+            {" "}
+            login
+          </Button>
+        )}
       </nav>
     </div>
   );

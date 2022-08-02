@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context/appContext";
 import { AuthContext } from "../context/authContext";
-
+import Button from 'react-bootstrap/Button';
 
 
 function SelectSearch({countries, getRegionUrl})  {
@@ -22,45 +22,33 @@ const regionsList = () => {
 
 
 
-
-
-
-  
-  
-
-  // useEffect( ()=>{
-  //  const getcountry= async ()=>{
-  //   //  const request= await fetch(`https://restcountries.com/v2/all?region/${region}`);
-  //    const request= await fetch(`https://restcountries.com/v3.1/region/${region}`);
-  //    const result= await request.json();
-  //   // console.log(result);
-  //   setContinents(result);
-  //   extractRegions()
-
-  //  }
-  //  getcountry();
-
-
-  // },[]);
 const handleSelect = (event) => {
-  console.log(event.target.value)
+  const nameregion=event.target.value;
+  console.log(event)
+  getRegionUrl(`https://restcountries.com/v3.1/region/${nameregion}`)
+}
+const handleReset = (event) => {
+
   
-  getRegionUrl(`https://restcountries.com/v3.1/region/${event.target.value}`)
 }
 
- 
+
   return (
     <div >
       <div className="select-container">
-<select onChange={handleSelect}>
+<select onChange={handleSelect}  selected>
  
         
-          {countries && regionsList().map((region,i) => (
+          {regionsList()&& regionsList().map((region,i) => (
             <option key={i} value={region} >{region}</option>
           ))}
+
           </select>
+          <Button variant="dark" onClick={handleReset}>Clear</Button>
       </div>
+      
     </div>
+   
   );
 
 }

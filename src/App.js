@@ -12,8 +12,13 @@ import NoMatch from "./Views/NoMatch";
 import { AppContextProvider } from "./context/appContext";
 import { AuthContextProvider } from "./context/authContext";
 import ProtectedRoute from './components/ProtectedRoute';
+import {app} from "./config/config"
+import Register from './Views/register';
+import Login from './Views/Login';
 
 function App() {
+
+  //console.log("app",app)
   return (
     <div>
   <h2>Country Contxt</h2>
@@ -27,6 +32,8 @@ function App() {
             } />
         
         <Route path="about" element={<About />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
         <Route path="countries/:name" element={<Details />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>

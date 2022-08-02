@@ -25,9 +25,7 @@ function CreateCard({country}) {
                     {/*    <Link to={{name}} />  or    <Link to={`${name}`} /> */}
                     {/* Line 44 Button that takes to details using and onclik function and useNavigate hook */}
                     {/* <Button onClick={showMore} variant="primary" >More Info</Button> */}
-                    <Link to={
-                        `${name}`
-                    }>
+                    <Link to={`${name}`}>
                         <Button variant="primary">More Info</Button>
 
                     </Link>

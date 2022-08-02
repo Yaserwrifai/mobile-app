@@ -52,7 +52,8 @@ export const AppContextProvider = (props) => {
         filterResult,
         setFilterResult, 
         url, 
-        setUrl
+        setUrl,
+        deleteData
       }}
     >
       {props.children}

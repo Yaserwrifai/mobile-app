@@ -21,40 +21,43 @@ function Countries() {
         deleteData,
         loader,
         url,
-        setUrl
+        setUrl,
+        
     } = useContext(AppContext)
     console.log('countries....in countries', countries)
     
-    const inputWord = (event) => {
-        setFilterResult(event.target.value);
-    }
+    // here i create a serach filtering
+const inputWord = (event) => {
+   setFilterResult(event.target.value);
+    // console.log("event.target.value: ", event.target.value);
+  };
+//  console.log(filterResult)
+//   const filterCountry = !filterResult ? countries : countries.filter((item) => {
+//          return item.name.toLowerCase().includes(filterResult.toLowerCase())
+//     })
+//     console.log('filterCountry:>>', filterCountry)
+  
 
+    const getRegionUrl = (regionUrl) => {
+        console.log('url', regionUrl) 
+        setUrl(regionUrl)
+    }
 
     useEffect(() => {
         console.log('url>>>>>', url)
         fetchData(url);
     }, [url]);
-
-    const getRegionUrl = (regionUrl) => {
-        console.log('url', regionUrl)
-        setUrl(regionUrl)
-    }
     return (
+        
         <div>
+            
             <Button variant="danger"
-                onClick={
-                    (deleteData)
-            }>Delete all</Button>
-            <Search inputWord={inputWord}/>
+                onClick={(deleteData)}>Delete all</Button>
+            <Search inputWord={inputWord}   /> 
             <SelectSearch countries={countries}
                 getRegionUrl={getRegionUrl}/>
 
-            <Row xs={1}
-                sm={2}
-                md={4}
-                lg={4}
-                xl={6}
-                className="g-4">
+            <Row xs={1} sm={2}  md={4} lg={4}  xl={6}y className="g-4">
                 {
                 countries && countries.map((country, i) => {
                     return (
@@ -67,4 +70,4 @@ function Countries() {
         </div>
     );
 }
-export default Countries;
+export default Countries
