@@ -15,6 +15,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import {app} from "./config/config"
 import Register from './Views/register';
 import Login from './Views/Login';
+import Chat from "./Views/Chat";
 
 function App() {
 
@@ -26,11 +27,23 @@ function App() {
       <Nav />
       <AppContextProvider>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="countries" element={
-            <ProtectedRoute><Countries /></ProtectedRoute>
-            } />
-        
+            <Route path="/" element={<Home />} />
+            <Route
+              path="contries"
+              element={
+                <ProtectedRoute>
+                  <Countries />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="chat"
+              element={
+                <ProtectedRoute>
+                  <Chat />
+                </ProtectedRoute>
+              }
+            />
         <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />

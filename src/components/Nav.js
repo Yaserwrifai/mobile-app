@@ -42,16 +42,12 @@ function Nav() {
       >
         <Link to="/">Home</Link> | <Link to="/about">About</Link> |{" "}
         {!user && <Link to="/Register">Register</Link>}|{" "}
-        {user && <Link to="/countries">Countries</Link>}
-        {user ? (
+        {user && <Link to="/contries">Countries</Link>}|{" "}
+        {user && <Link to="/chat">Chat</Link>}
+        {user && (
           <Button variant="danger" onClick={logOut}>
             {" "}
             logout
-          </Button>
-        ) : (
-          <Button variant="info" onClick={login}>
-            {" "}
-            login
           </Button>
         )}
       </nav>
