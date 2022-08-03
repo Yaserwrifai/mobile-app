@@ -1,4 +1,3 @@
-import React from "react";
 import { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
@@ -8,18 +7,11 @@ import {
 import { auth } from "../config/config";
 import { useNavigate } from "react-router-dom";
 
-//import { useNavigate } from "react-router-dom";
-
-// 1. Create Context
 export const AuthContext = createContext();
 
-// 2. Create the provider
-
 export const AuthContextProvider = (props) => {
-  // 3.  state and function
-
   const [user, setUser] = useState(null);
-  const redirectTo = useNavigate()
+  const redirectTo = useNavigate();
 
   const register = async (email, password) => {
     console.log(email, password);
@@ -37,7 +29,7 @@ export const AuthContextProvider = (props) => {
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      //console.log("errorMessage :>> ", errorMessage);
+      console.log("errorMessage :>> ", errorMessage);
     }
   };
 
@@ -49,7 +41,7 @@ export const AuthContextProvider = (props) => {
         // const user = userCredential.user;
         // ...
         setUser(userCredential.user);
-       redirectTo("/");
+        redirectTo("/");
       })
       .catch((error) => {
         setUser(null);
@@ -79,10 +71,8 @@ export const AuthContextProvider = (props) => {
     checkIfUserisLoggedIn();
   }, []);
 
-  // 4. return the provider with its value and inject children component
-
   return (
-    <AuthContext.Provider value={{ user, setUser,register,login}}>
+    <AuthContext.Provider value={{ user, setUser, register, login }}>
       {props.children}
     </AuthContext.Provider>
   );

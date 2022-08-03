@@ -6,26 +6,33 @@ import "react-bootstrap"
 import Col from 'react-bootstrap/Col';
 
 
-function CreateCard({country}) {
-// console.log('country...in create Card', country)
+function CreateCard({country}) { // console.log('country...in create Card', country)
     const {flag, name, capital, flags} = country;
-// console.log('country>>>>', country)
+    // console.log('country>>>>', country)
 
     return (
 
         <Col>
             <Card>
                 <Card.Img variant="top"
-                    src={flags.svg}/>
+                    src={
+                        flags.svg
+                    }/>
                 <Card.Body>
                     <Card.Title>
-                        <h2>{name.common}</h2>
+                        <h2>{
+                            name.common
+                        }</h2>
                     </Card.Title>
                     <Card.Text> {capital} </Card.Text>
                     {/*    <Link to={{name}} />  or    <Link to={`${name}`} /> */}
                     {/* Line 44 Button that takes to details using and onclik function and useNavigate hook */}
                     {/* <Button onClick={showMore} variant="primary" >More Info</Button> */}
-                    <Link to={`${name}`}>
+                    <Link to={
+                        `${
+                            name.common
+                        }`
+                    }>
                         <Button variant="primary">More Info</Button>
 
                     </Link>

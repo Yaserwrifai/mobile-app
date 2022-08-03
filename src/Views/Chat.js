@@ -1,9 +1,17 @@
-import React from 'react'
+import React, {useContext, useEffect} from "react";
+import {db} from "../config/config";
+
 
 function Chat() {
-  return (
-    <div>Chat</div>
-  )
+    console.log("db :>> ", db);
+
+    return (
+        <div>
+            <h2>Chat</h2>
+        </div>
+    )
+
+
 }
 
-export default Chat
+export default Chat;
