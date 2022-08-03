@@ -17,12 +17,12 @@ export const AppContextProvider = (props) => {
     const [url, setUrl] = useState('https://restcountries.com/v3.1/all/')
 
     const fetchData = async (url) => {
-        console.log('url in fetchData context', url)
+       // console.log('url in fetchData context', url)
         try {
 
             const response = await fetch(url);
             const results = await response.json();
-            console.log('results', results)
+          //  console.log('results', results)
             setCountries(results);
             setLoader(false);
         } catch (error) {

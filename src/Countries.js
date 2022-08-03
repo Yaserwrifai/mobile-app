@@ -24,7 +24,7 @@ function Countries() {
         setUrl,
         
     } = useContext(AppContext)
-    console.log('countries....in countries', countries)
+   // console.log('countries....in countries', countries)
     
     // here i create a serach filtering
 const inputWord = (event) => {
@@ -44,7 +44,7 @@ const inputWord = (event) => {
     }
 
     useEffect(() => {
-        console.log('url>>>>>', url)
+       // console.log('url>>>>>', url)
         fetchData(url);
     }, [url]);
     return (
