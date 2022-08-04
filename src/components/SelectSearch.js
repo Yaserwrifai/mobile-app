@@ -31,9 +31,9 @@ function SelectSearch({countries, getRegionUrl}) { // console.log('country', cou
         }
 
     }
-    const handleReset = (event) => {
-        getRegionUrl("https://restcountries.com/v3.1/all")
-    }
+    // const handleReset = (event) => {
+    //     getRegionUrl("https://restcountries.com/v3.1/all")
+    // }
 
 
     return (
@@ -42,6 +42,9 @@ function SelectSearch({countries, getRegionUrl}) { // console.log('country', cou
                 <label for="region">Select a Region</label>
                 <select onChange={handleSelect}
                     name="region">
+                        <option value="all">
+                      ALL  
+                    </option>
                     {
                     regionsList() && regionsList().map((region, i) => (
                         <option key={i}
@@ -49,12 +52,10 @@ function SelectSearch({countries, getRegionUrl}) { // console.log('country', cou
                             {region}</option>
                     ))
                 }
-                    <option value="all">
-                        All
-                    </option>
+                    
                 </select>
-                <Button variant="dark"
-                    onClick={handleReset}>Clear</Button>
+                {/* <Button class="btn btn-link"
+                    onClick={handleReset}>Clear</Button> */}
             </div>
 
         </div>

@@ -3,6 +3,7 @@ import "./App.css";
 import CreateCard from "./CreateCard";
 import Search from "./components/Search";
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import SelectSearch from "./components/SelectSearch";
 import {AppContext} from './context/appContext'
 import Button from "react-bootstrap/Button";
@@ -50,13 +51,12 @@ const inputWord = (event) => {
     return (
         
         <div>
-            
-            <Button variant="danger"
-                onClick={(deleteData)}>Delete all</Button>
-            <Search inputWord={inputWord}   /> 
-            <SelectSearch countries={countries}
-                getRegionUrl={getRegionUrl}/>
-
+            <Row className="navbar navbar-expand-sm bg-light">
+            <Col><Button className="btn btn-danger" onClick={(deleteData)}>Delete all</Button></Col>
+           <Col> <SelectSearch countries={countries} getRegionUrl={getRegionUrl}/></Col>
+                <Col><Search inputWord={inputWord}   /></Col>
+                
+</Row>
             <Row xs={1} sm={2}  md={4} lg={4}  xl={6}y className="g-4">
                 {
                 countries && countries.map((country, i) => {

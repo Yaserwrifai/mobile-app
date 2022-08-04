@@ -22,7 +22,7 @@ function App() {
    
     return (
         <div>
-            <h2>Country Contxt</h2>
+          
             <AuthContextProvider>
                 <Nav/>
                 <AppContextProvider>

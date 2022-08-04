@@ -13,16 +13,17 @@ function CreateCard({country}) { // console.log('country...in create Card', coun
     return (
 
         <Col>
-            <Card>
-                <Card.Img variant="top"
+         <Card style={{ height: '30rem'}}>
+                <Card.Img  style={{ height: '15rem'}} variant="top"
                     src={
                         flags.svg
                     }/>
+                  
                 <Card.Body>
                     <Card.Title>
-                        <h2>{
+                        <h4>{
                             name.common
-                        }</h2>
+                        }</h4>
                     </Card.Title>
                     <Card.Text> {capital} </Card.Text>
                     {/*    <Link to={{name}} />  or    <Link to={`${name}`} /> */}
