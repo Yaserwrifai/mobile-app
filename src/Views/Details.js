@@ -40,7 +40,7 @@ function Details() {
 
 
     return (
-        <>
+        <div>
             <Link to="/countries">
                 {" "}
                 <Button variant="primary">Go to Countries</Button>
@@ -57,7 +57,7 @@ function Details() {
                     }>
                         <Card.Img variant="top"
                             src={
-                                country.flag
+                                country.flags.svg
                             }/>
                         <Card.Body>
                             <Card.Title>
@@ -87,17 +87,22 @@ function Details() {
                                 <h3>Capital : {
                                     country.capital
                                 } </h3>
+
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <h3>SubRegion : {
                                     country.subregion
                                 } </h3>
+                                <Card.Img variant="top"
+                                    src={
+                                        country.coatOfArms.svg
+                                    }/>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
                 );
             })
-        } </>
+        } </div>
     );
 }
 
