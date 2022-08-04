@@ -5,6 +5,7 @@ import {AuthContext} from "../context/authContext";
 import {signOut} from "firebase/auth";
 import {auth} from "../config/config";
 
+
 function Nav() {
     const {user, setUser} = useContext(AuthContext);
     const redirectTo = useNavigate();
@@ -23,8 +24,8 @@ function Nav() {
     };
 
     return (
-        <div>
-            <nav style={
+        <div >
+            <nav   style={
                 {
                     borderBottom: "solid 1px",
                     paddingBottom: "1rem"

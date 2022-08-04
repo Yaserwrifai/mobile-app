@@ -27,7 +27,7 @@ export const AuthContextProvider = (props) => {
       console.log("userCredential :>> ", userCredential);
       setUser(userCredential.user);
     } catch (error) {
-      const errorCode = error.code;
+     const errorCode = error.code;
       const errorMessage = error.message;
       console.log("errorMessage :>> ", errorMessage);
     }
@@ -45,7 +45,7 @@ export const AuthContextProvider = (props) => {
       })
       .catch((error) => {
         setUser(null);
-        const errorCode = error.code;
+      const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
       });
