@@ -11,18 +11,20 @@ export const AppContextProvider = (props) => {
     // console.log("props :>> ", props);
     // 4. Move state and function
     const [filterResult, setFilterResult] = useState([])
+
+    const [searchedWord, setSearchedWord] = useState("")
+
     const [countries, setCountries] = useState([]);
     const [loader, setLoader] = useState(true);
     const [error, setError] = useState(null);
     const [url, setUrl] = useState('https://restcountries.com/v3.1/all/')
 
-    const fetchData = async (url) => {
-       // console.log('url in fetchData context', url)
+    const fetchData = async (url) => { // console.log('url in fetchData context', url)
         try {
 
             const response = await fetch(url);
             const results = await response.json();
-          //  console.log('results', results)
+            // console.log('results', results)
             setCountries(results);
             setLoader(false);
         } catch (error) {
@@ -34,7 +36,7 @@ export const AppContextProvider = (props) => {
     // Modify context data from component
 
     const deleteData = () => {
-        setCountries(null);
+        setCountries([]);
     };
 
     // 5. Return the provide with its value and inject children component
@@ -52,7 +54,9 @@ export const AppContextProvider = (props) => {
                 filterResult,
                 setFilterResult,
                 url,
-                setUrl
+                setUrl,
+                searchedWord,
+                setSearchedWord
             }
         }>
             {
