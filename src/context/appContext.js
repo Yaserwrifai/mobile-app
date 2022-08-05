@@ -1,5 +1,5 @@
 // 1. Import hook
-import React, {createContext, useState} from "react";
+import React, { createContext, useState } from "react";
 
 // 2. Create Context / Store
 
@@ -11,9 +11,7 @@ export const AppContextProvider = (props) => {
     // console.log("props :>> ", props);
     // 4. Move state and function
     const [filterResult, setFilterResult] = useState([])
-
     const [searchedWord, setSearchedWord] = useState("")
-
     const [countries, setCountries] = useState([]);
     const [loader, setLoader] = useState(true);
     const [error, setError] = useState(null);
@@ -21,7 +19,6 @@ export const AppContextProvider = (props) => {
 
     const fetchData = async (url) => { // console.log('url in fetchData context', url)
         try {
-
             const response = await fetch(url);
             const results = await response.json();
             // console.log('results', results)
@@ -40,7 +37,6 @@ export const AppContextProvider = (props) => {
     };
 
     // 5. Return the provide with its value and inject children component
-
     return (
         <AppContext.Provider value={
             {
@@ -60,7 +56,7 @@ export const AppContextProvider = (props) => {
             }
         }>
             {
-            props.children
-        } </AppContext.Provider>
+                props.children
+            } </AppContext.Provider>
     );
 };

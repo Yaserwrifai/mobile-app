@@ -2,7 +2,6 @@ import React from 'react';
 import {Route, Routes} from "react-router-dom";
 import './App.css'
 import Nav from "./components/Nav";
-
 import Home from "./Views/Home";
 import Countries from './Countries';
 import Details from "./Views/Details";
@@ -16,13 +15,9 @@ import Register from './Views/register';
 import Login from './Views/Login';
 import Chat from "./Views/Chat";
 
-function App() {
-
-     //console.log("app", app)
-   
+function App() { // console.log("app", app)
     return (
         <div>
-          
             <AuthContextProvider>
                 <Nav/>
                 <AppContextProvider>
@@ -37,7 +32,6 @@ function App() {
                             element={
                                 <ProtectedRoute><Chat/></ProtectedRoute>
                             }/>
-
                         <Route path="about"
                             element={<About/>}/>
                         <Route path="register"
@@ -54,5 +48,4 @@ function App() {
         </div>
     );
 }
-
 export default App;

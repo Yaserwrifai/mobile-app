@@ -1,18 +1,16 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./App.css";
 import CreateCard from "./CreateCard";
 import Search from "./components/Search";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import SelectSearch from "./components/SelectSearch";
-import {AppContext} from './context/appContext'
+import { AppContext } from './context/appContext'
 import Button from "react-bootstrap/Button";
-
 
 function Countries() {
     // const context=useContext(AppContext);
     // console.log("context :>>>",context);
-
     const {
         filterResult,
         setFilterResult,
@@ -28,7 +26,6 @@ function Countries() {
 
     } = useContext(AppContext)
     // console.log('countries....in countries', countries)
-
     // here i create a serach filtering
     const inputWord = (event) => {
         console.log('event.target.value', event.target.value)
@@ -41,13 +38,10 @@ function Countries() {
     //          return item.name.toLowerCase().includes(filterResult.toLowerCase())
     //     })
     //     console.log('filterCountry:>>', filterCountry)
-
-
     const getRegionUrl = (regionUrl) => {
         console.log('url', regionUrl)
         setUrl(regionUrl)
     }
-
     useEffect(() => { // console.log('url>>>>>', url)
         fetchData(url);
     }, [url]);
@@ -61,22 +55,16 @@ function Countries() {
                 </Col>
                 <Col>
                     <SelectSearch countries={countries}
-                        getRegionUrl={getRegionUrl}/></Col>
+                        getRegionUrl={getRegionUrl} /></Col>
                 <Col><Search inputWord={inputWord}
-                        searchedWord={searchedWord}/></Col>
+                    searchedWord={searchedWord} /></Col>
 
             </Row>
-            <Row xs={1}
-                sm={2}
-                md={4}
-                lg={4}
-                xl={6}
-                className="g-4">
-                {
+            <Row xs={1} sm={2} md={4} lg={4} xl={6} className="g-4">{
                 countries && countries.filter((country, i) => country.name.common.toLowerCase().includes(searchedWord.toLowerCase())).map((country, i) => {
                     return (
                         <CreateCard country={country}
-                            key={i}/>
+                            key={i} />
                     );
                 })
             } </Row>

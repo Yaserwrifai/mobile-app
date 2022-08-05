@@ -8,7 +8,8 @@ function Home() {
     const {user} = useContext(AuthContext)
     // console.log('countries', countries)
     return (
-        <div>
+      <div className="back ">
+        <div className="back1" style={{color:"red"  } }>
             <h1>Home</h1>
             {
             user && <h2>Hello {
@@ -29,6 +30,7 @@ function Home() {
                 <button>visit all countries</button>
             </Link> : <Link to="login">go to login</Link>
         } </div>
+        </div>
     );
 }
 

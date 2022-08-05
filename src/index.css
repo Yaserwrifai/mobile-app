@@ -12,9 +12,7 @@ code {
     monospace;
 }
 
-
-/* .container {
-  display: grid;
-  grid-template-columns: 10rem 10rem 10rem;
-  grid-gap: 1rem;
-} */
+.back {
+  background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
+  height: 100vh;
+}

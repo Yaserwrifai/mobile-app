@@ -1,12 +1,12 @@
-import {useParams, Link} from "react-router-dom";
-import React, {useEffect, useState} from "react";
-import {Card} from "react-bootstrap";
-import {ListGroup} from "react-bootstrap";
-import {Button} from "react-bootstrap";
+import { useParams, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Card } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 
 function Details() {
-    let {name} = useParams();
+    let { name } = useParams();
     console.log("name: ", name);
     console.log("useParams()>>>", useParams());
     // Second Fetch function with Name of the country
@@ -38,71 +38,70 @@ function Details() {
         fecthDetails();
     }, []);
 
-
     return (
-        <div>
+        <div className="back2">
             <Link to="/countries">
                 {" "}
                 <Button variant="primary">Go to Countries</Button>
             </Link>
             {
-            details && details.map((country, i) => {
-                return (
-                    <Card key={i}
-                        style={
-                            {
-                                height: "15rem",
-                                width: "20rem"
-                            }
-                    }>
-                        <Card.Img variant="top"
-                            src={
-                                country.flags.svg
-                            }/>
-                        <Card.Body>
-                            <Card.Title>
-                                <h2>About Country</h2>
-                            </Card.Title>
-                            <Card.Text></Card.Text>
-                        </Card.Body>
-                        <ListGroup className="list-group-flush"
-                            key={i}>
-                            <ListGroup.Item>
-                                <h3>Population : {
-                                    country.population
-                                }</h3>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <h3>Capital : {
-                                    country.capital
-                                }</h3>
-                                {" "} </ListGroup.Item>
-                            <ListGroup.Item>
-                                <h3>
-                                    Official Name : {
-                                    country.name.official
-                                }</h3>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <h3>Capital : {
-                                    country.capital
-                                } </h3>
+                details && details.map((country, i) => {
+                    return (
+                        <Card key={i}
+                            style={
+                                {
+                                    height: "15rem",
+                                    width: "20rem"
+                                }
+                            }>
+                            <Card.Img variant="top"
+                                src={
+                                    country.flags.svg
+                                } />
+                            <Card.Body>
+                                <Card.Title>
+                                    <h4>About this country</h4>
+                                </Card.Title>
+                                <Card.Text></Card.Text>
+                            </Card.Body >
+                            <ListGroup className="list-group-flush"
+                                key={i}>
+                                <ListGroup.Item>
+                                    <h5>Population : {
+                                        country.population
+                                    }</h5>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <h5>Capital : {
+                                        country.capital
+                                    }</h5>
+                                    {" "} </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <h5>
+                                        Official Name : {
+                                            country.name.official
+                                        }</h5>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <h5>Capital : {
+                                        country.capital
+                                    } </h5>
 
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <h3>SubRegion : {
-                                    country.subregion
-                                } </h3>
-                                <Card.Img variant="top"
-                                    src={
-                                        country.coatOfArms.svg
-                                    }/>
-                            </ListGroup.Item>
-                        </ListGroup>
-                    </Card>
-                );
-            })
-        } </div>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <h5>SubRegion : {
+                                        country.subregion
+                                    } </h5>
+                                    <Card.Img variant="top"
+                                        src={
+                                            country.coatOfArms.svg
+                                        } />
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    );
+                })
+            } </div>
     );
 }
 
