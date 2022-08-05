@@ -79,8 +79,8 @@ function Details() {
                                 {" "} </ListGroup.Item>
                             <ListGroup.Item>
                                 <h3>
-                                    Native Name : {
-                                    country.nativeName
+                                    Official Name : {
+                                    country.name.official
                                 }</h3>
                             </ListGroup.Item>
                             <ListGroup.Item>

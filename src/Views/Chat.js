@@ -1,11 +1,13 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useRef} from "react";
 import {db} from "../config/config";
 import {
     collection,
     getDocs,
     addDoc,
     query,
-    onSnapshot
+    onSnapshot,
+    doc,
+    deleteDoc
 } from "firebase/firestore";
 import {useState} from "react";
 import {AuthContext} from "../context/authContext";
@@ -52,10 +54,23 @@ function Chat() { // console.log("db :>> ", db);
         try {
             const docRef = await addDoc(collection(db, "chat"), newChatMsg);
             console.log("Document written with ID: ", docRef.id);
+            divReference.current.scrollIntoView({behaviour: "smooth"})
         } catch (e) {
             console.error("Error adding document: ", e);
         }
     };
+    const divReference = useRef()
+
+    const deleteMessage = async (id, author) => {
+        console.log(author)
+        if (author === user.email) { // console.log('id', id)
+            console.log("you can delete ")
+            await deleteDoc(doc(db, "chat", "messageID...findthis"));
+        } else {
+            alert("you cannot delete other's messages")
+        }
+
+    }
 
     return (
         <div>
@@ -79,6 +94,11 @@ function Chat() { // console.log("db :>> ", db);
                         <p>{
                             msgDate(message.date)
                         }</p>
+                        <button onClick={
+                            () => {
+                                deleteMessage("put here the message ID", message.author)
+                            }
+                        }>delete</button>
                     </div>
                 );
             })
@@ -86,7 +106,10 @@ function Chat() { // console.log("db :>> ", db);
             <input type="text" name="chat" id="chat"
                 value={chatMsg}
                 onChange={handleChatMsgHandler}/>
-            <button onClick={handleSendMsgHandler}>Send</button>
+            <div ref={divReference}>
+
+                <button onClick={handleSendMsgHandler}>Send</button>
+            </div>
         </div>
     );
 }
